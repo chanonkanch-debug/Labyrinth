@@ -130,8 +130,9 @@ def create_admin_app(settings: Settings | None = None, db: DB | None = None) -> 
     def dashboard(request: Request):
         auth(request)
         s = summary(db)
+        observe_mode = settings.mode != "divert"
         tiles = "".join(f'<div class="tile"><b>{v}</b><span>{k}</span></div>' for k, v in [
-            ("Sessions trapped", s["sessions_trapped"]),
+            ("Sessions flagged (not diverted)" if observe_mode else "Sessions trapped", s["sessions_trapped"]),
             ("Attacker time wasted", _fmt_dur(s["time_wasted_seconds"])),
             ("Decoy responses served", s["decoy_requests"]),
             ("Planted canary hits", s["canary_hits"]),
@@ -157,9 +158,10 @@ def create_admin_app(settings: Settings | None = None, db: DB | None = None) -> 
             <td class="mono">{h['method']} {html.escape(h['path'])}</td></tr>""" for h in hits) or '<tr><td colspan="4">No hits.</td></tr>'
         opts = "".join(f"<option>{k}</option>" for k in KINDS)
         return page("Labyrinth", f"""
-<h1>Labyrinth</h1><div class="sub">Engagement dashboard · refreshes every 5s · upstream <code>{html.escape(settings.upstream)}</code></div>
+<h1>Labyrinth</h1><div class="sub">Engagement dashboard · refreshes every 5s · upstream <code>{html.escape(settings.upstream)}</code> ·
+mode <b>{'OBSERVE (nothing is diverted)' if observe_mode else 'divert'}</b></div>
 <div class="tiles">{tiles}</div>
-<h2>Trapped sessions</h2><div class="wrap"><table><tr><th>Session</th><th>User-agent</th><th>Score</th><th>Why diverted</th>
+<h2>{'Flagged sessions' if observe_mode else 'Trapped sessions'}</h2><div class="wrap"><table><tr><th>Session</th><th>User-agent</th><th>Score</th><th>Why diverted</th>
 <th>Diverted</th><th>Time in decoy</th><th>Requests / paths</th><th>Techniques</th></tr>{rows}</table></div>
 <h2>Techniques observed</h2><div>{techs}</div>
 <h2>Planted canary hits</h2><div class="wrap"><table><tr><th>When</th><th>Canary</th><th>Session</th><th>Request</th></tr>{hrow}</table></div>
@@ -204,4 +206,5 @@ if __name__ == "__main__":
     import uvicorn
 
     logging.basicConfig(level=logging.INFO)
-    uvicorn.run(create_admin_app(), host="127.0.0.1", port=int(os.getenv("LABYRINTH_ADMIN_PORT", "8090")))
+    s = Settings()
+    uvicorn.run(create_admin_app(s), host=s.admin_host, port=s.admin_port)

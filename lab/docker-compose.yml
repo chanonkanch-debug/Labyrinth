@@ -1,0 +1,141 @@
+# Labyrinth framework lab: ten real apps, each behind its own Labyrinth.
+#
+#   docker compose -f lab/docker-compose.yml up -d --build
+#   python lab/matrix.py
+#
+# Ports (all bound to 127.0.0.1):  app direct 70NN  ·  through Labyrinth 71NN  ·  dashboard 72NN (token: lab)
+# LABYRINTH_MODE=observe docker compose ... runs every proxy in observe-only mode.
+
+x-labyrinth: &labyrinth
+  build: ..
+  image: labyrinth:dev
+  restart: unless-stopped
+
+x-labyrinth-env: &labyrinth-env
+  LABYRINTH_ADMIN_TOKEN: lab
+  LABYRINTH_ADMIN_HOST: 0.0.0.0
+  LABYRINTH_TARPIT_MS: "100"
+  LABYRINTH_COMPANY: labshop
+  LABYRINTH_MODE: ${LABYRINTH_MODE:-divert}
+  ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+
+services:
+  express:
+    build: apps/express
+    ports: ["127.0.0.1:7001:8000"]
+
+  labyrinth-express:
+    <<: *labyrinth
+    environment:
+      <<: *labyrinth-env
+      LABYRINTH_UPSTREAM: http://express:8000
+    ports: ["127.0.0.1:7101:8080", "127.0.0.1:7201:8090"]
+    depends_on: [express]
+
+  nextjs:
+    build: apps/nextjs
+    ports: ["127.0.0.1:7002:8000"]
+
+  labyrinth-nextjs:
+    <<: *labyrinth
+    environment:
+      <<: *labyrinth-env
+      LABYRINTH_UPSTREAM: http://nextjs:8000
+    ports: ["127.0.0.1:7102:8080", "127.0.0.1:7202:8090"]
+    depends_on: [nextjs]
+
+  fastapi:
+    build: apps/fastapi
+    ports: ["127.0.0.1:7003:8000"]
+
+  labyrinth-fastapi:
+    <<: *labyrinth
+    environment:
+      <<: *labyrinth-env
+      LABYRINTH_UPSTREAM: http://fastapi:8000
+    ports: ["127.0.0.1:7103:8080", "127.0.0.1:7203:8090"]
+    depends_on: [fastapi]
+
+  django:
+    build: apps/django
+    ports: ["127.0.0.1:7004:8000"]
+
+  labyrinth-django:
+    <<: *labyrinth
+    environment:
+      <<: *labyrinth-env
+      LABYRINTH_UPSTREAM: http://django:8000
+    ports: ["127.0.0.1:7104:8080", "127.0.0.1:7204:8090"]
+    depends_on: [django]
+
+  flask:
+    build: apps/flask
+    ports: ["127.0.0.1:7005:8000"]
+
+  labyrinth-flask:
+    <<: *labyrinth
+    environment:
+      <<: *labyrinth-env
+      LABYRINTH_UPSTREAM: http://flask:8000
+    ports: ["127.0.0.1:7105:8080", "127.0.0.1:7205:8090"]
+    depends_on: [flask]
+
+  spring:
+    build: apps/spring
+    ports: ["127.0.0.1:7006:8000"]
+
+  labyrinth-spring:
+    <<: *labyrinth
+    environment:
+      <<: *labyrinth-env
+      LABYRINTH_UPSTREAM: http://spring:8000
+    ports: ["127.0.0.1:7106:8080", "127.0.0.1:7206:8090"]
+    depends_on: [spring]
+
+  go:
+    build: apps/go
+    ports: ["127.0.0.1:7007:8000"]
+
+  labyrinth-go:
+    <<: *labyrinth
+    environment:
+      <<: *labyrinth-env
+      LABYRINTH_UPSTREAM: http://go:8000
+    ports: ["127.0.0.1:7107:8080", "127.0.0.1:7207:8090"]
+    depends_on: [go]
+
+  rails:
+    build: apps/rails
+    ports: ["127.0.0.1:7008:8000"]
+
+  labyrinth-rails:
+    <<: *labyrinth
+    environment:
+      <<: *labyrinth-env
+      LABYRINTH_UPSTREAM: http://rails:8000
+    ports: ["127.0.0.1:7108:8080", "127.0.0.1:7208:8090"]
+    depends_on: [rails]
+
+  laravel:
+    build: apps/laravel
+    ports: ["127.0.0.1:7009:8000"]
+
+  labyrinth-laravel:
+    <<: *labyrinth
+    environment:
+      <<: *labyrinth-env
+      LABYRINTH_UPSTREAM: http://laravel:8000
+    ports: ["127.0.0.1:7109:8080", "127.0.0.1:7209:8090"]
+    depends_on: [laravel]
+
+  aspnet:
+    build: apps/aspnet
+    ports: ["127.0.0.1:7010:8000"]
+
+  labyrinth-aspnet:
+    <<: *labyrinth
+    environment:
+      <<: *labyrinth-env
+      LABYRINTH_UPSTREAM: http://aspnet:8000
+    ports: ["127.0.0.1:7110:8080", "127.0.0.1:7210:8090"]
+    depends_on: [aspnet]

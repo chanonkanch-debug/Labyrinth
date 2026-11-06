@@ -22,7 +22,7 @@ dashboard. Everything runs locally with no API key; add an Anthropic key to swit
 ## Quick start (2 minutes)
 
 ```bash
-python -m venv .venv && source .venv/bin/activate   # fish: source .venv/bin/activate.fish
+python -m venv .venv && source .venv/bin/activate.fish   # fish: source .venv/bin/activate.fish
 pip install -r requirements.txt
 python -m harness.demo --fresh      # starts real API, proxy, dashboard; runs a user and two attackers
 open http://127.0.0.1:8090          # dashboard

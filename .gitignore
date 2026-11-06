@@ -6,3 +6,6 @@ __pycache__/
 *.db-wal
 *.db-shm
 .env
+package-lock.json
+Gemfile.lock
+lab/apps/laravel/app/

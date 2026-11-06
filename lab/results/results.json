@@ -1,0 +1,1652 @@
+[
+  {
+    "target": "express",
+    "metrics": {
+      "requests_until_diverted": 9,
+      "decoy_tells": []
+    },
+    "results": [
+      {
+        "group": "transparency",
+        "check": "GET /api/health",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/1",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/999",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Requests after HEAD still work",
+        "status": "pass",
+        "detail": "[200, 200, 200]"
+      },
+      {
+        "group": "transparency",
+        "check": "HEAD request",
+        "status": "pass",
+        "detail": "200 vs 200"
+      },
+      {
+        "group": "transparency",
+        "check": "POST JSON",
+        "status": "pass",
+        "detail": "201 vs 201"
+      },
+      {
+        "group": "transparency",
+        "check": "Response headers match",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Compression preserved",
+        "status": "pass",
+        "detail": "direct None, proxy None"
+      },
+      {
+        "group": "transparency",
+        "check": "Login (CSRF + session cookie)",
+        "status": "pass",
+        "detail": "proxy 302 /dashboard"
+      },
+      {
+        "group": "transparency",
+        "check": "All Set-Cookie headers kept",
+        "status": "pass",
+        "detail": "direct 2, proxy 2"
+      },
+      {
+        "group": "transparency",
+        "check": "Session works after login",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "Checkout with session",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "CSRF still enforced",
+        "status": "n/a",
+        "detail": "no CSRF in this app"
+      },
+      {
+        "group": "transparency",
+        "check": "5 MB multipart upload",
+        "status": "pass",
+        "detail": "direct 200 proxy 200 {\"size\":5242880}"
+      },
+      {
+        "group": "transparency",
+        "check": "Redirect Location",
+        "status": "pass",
+        "detail": "direct '/api/health', proxy '/api/health'"
+      },
+      {
+        "group": "transparency",
+        "check": "Server-sent events stream live",
+        "status": "pass",
+        "detail": "3 events, first after 0.53s"
+      },
+      {
+        "group": "transparency",
+        "check": "WebSocket echo",
+        "status": "pass",
+        "detail": "'echo:ping'"
+      },
+      {
+        "group": "safety",
+        "check": "Human browsing session",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "Browser page-load burst (25 parallel requests)",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "API client polling every 1s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "User hitting a few 404s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "detection",
+        "check": "Scanner diverted by behaviour",
+        "status": "pass",
+        "detail": "after 9 requests"
+      },
+      {
+        "group": "detection",
+        "check": "Decoy indistinguishable from real app",
+        "status": "pass",
+        "detail": "no tells found"
+      },
+      {
+        "group": "detection",
+        "check": "Login still reaches real app when diverted",
+        "status": "pass",
+        "detail": "302"
+      },
+      {
+        "group": "detection",
+        "check": "Canary key diverts on first request",
+        "status": "pass",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "target": "nextjs",
+    "metrics": {
+      "requests_until_diverted": 9,
+      "decoy_tells": []
+    },
+    "results": [
+      {
+        "group": "transparency",
+        "check": "GET /api/health",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/1",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/999",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Requests after HEAD still work",
+        "status": "pass",
+        "detail": "[200, 200, 200]"
+      },
+      {
+        "group": "transparency",
+        "check": "HEAD request",
+        "status": "pass",
+        "detail": "200 vs 200"
+      },
+      {
+        "group": "transparency",
+        "check": "POST JSON",
+        "status": "pass",
+        "detail": "201 vs 201"
+      },
+      {
+        "group": "transparency",
+        "check": "Response headers match",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Compression preserved",
+        "status": "pass",
+        "detail": "direct None, proxy None"
+      },
+      {
+        "group": "transparency",
+        "check": "Login (CSRF + session cookie)",
+        "status": "pass",
+        "detail": "proxy 302 /dashboard"
+      },
+      {
+        "group": "transparency",
+        "check": "All Set-Cookie headers kept",
+        "status": "pass",
+        "detail": "direct 2, proxy 2"
+      },
+      {
+        "group": "transparency",
+        "check": "Session works after login",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "Checkout with session",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "CSRF still enforced",
+        "status": "n/a",
+        "detail": "no CSRF in this app"
+      },
+      {
+        "group": "transparency",
+        "check": "5 MB multipart upload",
+        "status": "pass",
+        "detail": "direct 200 proxy 200 {\"size\":5242880}"
+      },
+      {
+        "group": "transparency",
+        "check": "Redirect Location",
+        "status": "pass",
+        "detail": "direct '/api/health', proxy '/api/health'"
+      },
+      {
+        "group": "transparency",
+        "check": "Server-sent events stream live",
+        "status": "pass",
+        "detail": "3 events, first after 0.07s"
+      },
+      {
+        "group": "transparency",
+        "check": "WebSocket echo",
+        "status": "n/a",
+        "detail": "app has no websocket endpoint"
+      },
+      {
+        "group": "safety",
+        "check": "Human browsing session",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "Browser page-load burst (25 parallel requests)",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "API client polling every 1s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "User hitting a few 404s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "detection",
+        "check": "Scanner diverted by behaviour",
+        "status": "pass",
+        "detail": "after 9 requests"
+      },
+      {
+        "group": "detection",
+        "check": "Decoy indistinguishable from real app",
+        "status": "pass",
+        "detail": "no tells found"
+      },
+      {
+        "group": "detection",
+        "check": "Login still reaches real app when diverted",
+        "status": "pass",
+        "detail": "302"
+      },
+      {
+        "group": "detection",
+        "check": "Canary key diverts on first request",
+        "status": "pass",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "target": "fastapi",
+    "metrics": {
+      "requests_until_diverted": 9,
+      "decoy_tells": []
+    },
+    "results": [
+      {
+        "group": "transparency",
+        "check": "GET /api/health",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/1",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/999",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Requests after HEAD still work",
+        "status": "pass",
+        "detail": "[200, 200, 200]"
+      },
+      {
+        "group": "transparency",
+        "check": "HEAD request",
+        "status": "pass",
+        "detail": "405 vs 405"
+      },
+      {
+        "group": "transparency",
+        "check": "POST JSON",
+        "status": "pass",
+        "detail": "201 vs 201"
+      },
+      {
+        "group": "transparency",
+        "check": "Response headers match",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Compression preserved",
+        "status": "pass",
+        "detail": "direct None, proxy None"
+      },
+      {
+        "group": "transparency",
+        "check": "Login (CSRF + session cookie)",
+        "status": "pass",
+        "detail": "proxy 302 /dashboard"
+      },
+      {
+        "group": "transparency",
+        "check": "All Set-Cookie headers kept",
+        "status": "pass",
+        "detail": "direct 2, proxy 2"
+      },
+      {
+        "group": "transparency",
+        "check": "Session works after login",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "Checkout with session",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "CSRF still enforced",
+        "status": "n/a",
+        "detail": "no CSRF in this app"
+      },
+      {
+        "group": "transparency",
+        "check": "5 MB multipart upload",
+        "status": "pass",
+        "detail": "direct 200 proxy 200 {\"size\":5242880}"
+      },
+      {
+        "group": "transparency",
+        "check": "Redirect Location",
+        "status": "pass",
+        "detail": "direct '/api/health', proxy '/api/health'"
+      },
+      {
+        "group": "transparency",
+        "check": "Server-sent events stream live",
+        "status": "pass",
+        "detail": "3 events, first after 0.01s"
+      },
+      {
+        "group": "transparency",
+        "check": "WebSocket echo",
+        "status": "pass",
+        "detail": "'echo:ping'"
+      },
+      {
+        "group": "safety",
+        "check": "Human browsing session",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "Browser page-load burst (25 parallel requests)",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "API client polling every 1s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "User hitting a few 404s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "detection",
+        "check": "Scanner diverted by behaviour",
+        "status": "pass",
+        "detail": "after 9 requests"
+      },
+      {
+        "group": "detection",
+        "check": "Decoy indistinguishable from real app",
+        "status": "pass",
+        "detail": "no tells found"
+      },
+      {
+        "group": "detection",
+        "check": "Login still reaches real app when diverted",
+        "status": "pass",
+        "detail": "302"
+      },
+      {
+        "group": "detection",
+        "check": "Canary key diverts on first request",
+        "status": "pass",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "target": "django",
+    "metrics": {
+      "requests_until_diverted": 9,
+      "decoy_tells": []
+    },
+    "results": [
+      {
+        "group": "transparency",
+        "check": "GET /api/health",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/1",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/999",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Requests after HEAD still work",
+        "status": "pass",
+        "detail": "[200, 200, 200]"
+      },
+      {
+        "group": "transparency",
+        "check": "HEAD request",
+        "status": "pass",
+        "detail": "200 vs 200"
+      },
+      {
+        "group": "transparency",
+        "check": "POST JSON",
+        "status": "pass",
+        "detail": "201 vs 201"
+      },
+      {
+        "group": "transparency",
+        "check": "Response headers match",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Compression preserved",
+        "status": "pass",
+        "detail": "direct None, proxy None"
+      },
+      {
+        "group": "transparency",
+        "check": "Login (CSRF + session cookie)",
+        "status": "pass",
+        "detail": "proxy 302 /dashboard"
+      },
+      {
+        "group": "transparency",
+        "check": "All Set-Cookie headers kept",
+        "status": "pass",
+        "detail": "direct 2, proxy 2"
+      },
+      {
+        "group": "transparency",
+        "check": "Session works after login",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "Checkout with session",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "CSRF still enforced",
+        "status": "pass",
+        "detail": "direct 403, proxy 403"
+      },
+      {
+        "group": "transparency",
+        "check": "5 MB multipart upload",
+        "status": "pass",
+        "detail": "direct 200 proxy 200 {\"size\": 5242880}"
+      },
+      {
+        "group": "transparency",
+        "check": "Redirect Location",
+        "status": "pass",
+        "detail": "direct '/api/health', proxy '/api/health'"
+      },
+      {
+        "group": "transparency",
+        "check": "Server-sent events stream live",
+        "status": "pass",
+        "detail": "3 events, first after 0.03s"
+      },
+      {
+        "group": "transparency",
+        "check": "WebSocket echo",
+        "status": "n/a",
+        "detail": "app has no websocket endpoint"
+      },
+      {
+        "group": "safety",
+        "check": "Human browsing session",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "Browser page-load burst (25 parallel requests)",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "API client polling every 1s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "User hitting a few 404s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "detection",
+        "check": "Scanner diverted by behaviour",
+        "status": "pass",
+        "detail": "after 9 requests"
+      },
+      {
+        "group": "detection",
+        "check": "Decoy indistinguishable from real app",
+        "status": "pass",
+        "detail": "no tells found"
+      },
+      {
+        "group": "detection",
+        "check": "Login still reaches real app when diverted",
+        "status": "pass",
+        "detail": "302"
+      },
+      {
+        "group": "detection",
+        "check": "Canary key diverts on first request",
+        "status": "pass",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "target": "flask",
+    "metrics": {
+      "requests_until_diverted": 9,
+      "decoy_tells": []
+    },
+    "results": [
+      {
+        "group": "transparency",
+        "check": "GET /api/health",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/1",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/999",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Requests after HEAD still work",
+        "status": "pass",
+        "detail": "[200, 200, 200]"
+      },
+      {
+        "group": "transparency",
+        "check": "HEAD request",
+        "status": "pass",
+        "detail": "200 vs 200"
+      },
+      {
+        "group": "transparency",
+        "check": "POST JSON",
+        "status": "pass",
+        "detail": "201 vs 201"
+      },
+      {
+        "group": "transparency",
+        "check": "Response headers match",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Compression preserved",
+        "status": "pass",
+        "detail": "direct None, proxy None"
+      },
+      {
+        "group": "transparency",
+        "check": "Login (CSRF + session cookie)",
+        "status": "pass",
+        "detail": "proxy 302 /dashboard"
+      },
+      {
+        "group": "transparency",
+        "check": "All Set-Cookie headers kept",
+        "status": "pass",
+        "detail": "direct 2, proxy 2"
+      },
+      {
+        "group": "transparency",
+        "check": "Session works after login",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "Checkout with session",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "CSRF still enforced",
+        "status": "n/a",
+        "detail": "no CSRF in this app"
+      },
+      {
+        "group": "transparency",
+        "check": "5 MB multipart upload",
+        "status": "pass",
+        "detail": "direct 200 proxy 200 {\"size\":5242880}\n"
+      },
+      {
+        "group": "transparency",
+        "check": "Redirect Location",
+        "status": "pass",
+        "detail": "direct '/api/health', proxy '/api/health'"
+      },
+      {
+        "group": "transparency",
+        "check": "Server-sent events stream live",
+        "status": "pass",
+        "detail": "3 events, first after 0.04s"
+      },
+      {
+        "group": "transparency",
+        "check": "WebSocket echo",
+        "status": "n/a",
+        "detail": "app has no websocket endpoint"
+      },
+      {
+        "group": "safety",
+        "check": "Human browsing session",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "Browser page-load burst (25 parallel requests)",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "API client polling every 1s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "User hitting a few 404s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "detection",
+        "check": "Scanner diverted by behaviour",
+        "status": "pass",
+        "detail": "after 9 requests"
+      },
+      {
+        "group": "detection",
+        "check": "Decoy indistinguishable from real app",
+        "status": "pass",
+        "detail": "no tells found"
+      },
+      {
+        "group": "detection",
+        "check": "Login still reaches real app when diverted",
+        "status": "pass",
+        "detail": "302"
+      },
+      {
+        "group": "detection",
+        "check": "Canary key diverts on first request",
+        "status": "pass",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "target": "spring",
+    "metrics": {
+      "requests_until_diverted": 9,
+      "decoy_tells": []
+    },
+    "results": [
+      {
+        "group": "transparency",
+        "check": "GET /api/health",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/1",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/999",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Requests after HEAD still work",
+        "status": "pass",
+        "detail": "[200, 200, 200]"
+      },
+      {
+        "group": "transparency",
+        "check": "HEAD request",
+        "status": "pass",
+        "detail": "200 vs 200"
+      },
+      {
+        "group": "transparency",
+        "check": "POST JSON",
+        "status": "pass",
+        "detail": "201 vs 201"
+      },
+      {
+        "group": "transparency",
+        "check": "Response headers match",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Compression preserved",
+        "status": "pass",
+        "detail": "direct None, proxy None"
+      },
+      {
+        "group": "transparency",
+        "check": "Login (CSRF + session cookie)",
+        "status": "pass",
+        "detail": "proxy 302 /dashboard"
+      },
+      {
+        "group": "transparency",
+        "check": "All Set-Cookie headers kept",
+        "status": "pass",
+        "detail": "direct 2, proxy 2"
+      },
+      {
+        "group": "transparency",
+        "check": "Session works after login",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "Checkout with session",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "CSRF still enforced",
+        "status": "n/a",
+        "detail": "no CSRF in this app"
+      },
+      {
+        "group": "transparency",
+        "check": "5 MB multipart upload",
+        "status": "pass",
+        "detail": "direct 200 proxy 200 {\"size\":5242880}"
+      },
+      {
+        "group": "transparency",
+        "check": "Redirect Location",
+        "status": "pass",
+        "detail": "direct '/api/health', proxy '/api/health'"
+      },
+      {
+        "group": "transparency",
+        "check": "Server-sent events stream live",
+        "status": "pass",
+        "detail": "3 events, first after 0.02s"
+      },
+      {
+        "group": "transparency",
+        "check": "WebSocket echo",
+        "status": "pass",
+        "detail": "'echo:ping'"
+      },
+      {
+        "group": "safety",
+        "check": "Human browsing session",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "Browser page-load burst (25 parallel requests)",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "API client polling every 1s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "User hitting a few 404s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "detection",
+        "check": "Scanner diverted by behaviour",
+        "status": "pass",
+        "detail": "after 9 requests"
+      },
+      {
+        "group": "detection",
+        "check": "Decoy indistinguishable from real app",
+        "status": "pass",
+        "detail": "no tells found"
+      },
+      {
+        "group": "detection",
+        "check": "Login still reaches real app when diverted",
+        "status": "pass",
+        "detail": "302"
+      },
+      {
+        "group": "detection",
+        "check": "Canary key diverts on first request",
+        "status": "pass",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "target": "go",
+    "metrics": {
+      "requests_until_diverted": 9,
+      "decoy_tells": []
+    },
+    "results": [
+      {
+        "group": "transparency",
+        "check": "GET /api/health",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/1",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/999",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Requests after HEAD still work",
+        "status": "pass",
+        "detail": "[200, 200, 200]"
+      },
+      {
+        "group": "transparency",
+        "check": "HEAD request",
+        "status": "pass",
+        "detail": "200 vs 200"
+      },
+      {
+        "group": "transparency",
+        "check": "POST JSON",
+        "status": "pass",
+        "detail": "201 vs 201"
+      },
+      {
+        "group": "transparency",
+        "check": "Response headers match",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Compression preserved",
+        "status": "pass",
+        "detail": "direct None, proxy None"
+      },
+      {
+        "group": "transparency",
+        "check": "Login (CSRF + session cookie)",
+        "status": "pass",
+        "detail": "proxy 302 /dashboard"
+      },
+      {
+        "group": "transparency",
+        "check": "All Set-Cookie headers kept",
+        "status": "pass",
+        "detail": "direct 2, proxy 2"
+      },
+      {
+        "group": "transparency",
+        "check": "Session works after login",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "Checkout with session",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "CSRF still enforced",
+        "status": "n/a",
+        "detail": "no CSRF in this app"
+      },
+      {
+        "group": "transparency",
+        "check": "5 MB multipart upload",
+        "status": "pass",
+        "detail": "direct 200 proxy 200 {\"size\":5242880}\n"
+      },
+      {
+        "group": "transparency",
+        "check": "Redirect Location",
+        "status": "pass",
+        "detail": "direct '/api/health', proxy '/api/health'"
+      },
+      {
+        "group": "transparency",
+        "check": "Server-sent events stream live",
+        "status": "pass",
+        "detail": "3 events, first after 0.07s"
+      },
+      {
+        "group": "transparency",
+        "check": "WebSocket echo",
+        "status": "pass",
+        "detail": "'echo:ping'"
+      },
+      {
+        "group": "safety",
+        "check": "Human browsing session",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "Browser page-load burst (25 parallel requests)",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "API client polling every 1s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "User hitting a few 404s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "detection",
+        "check": "Scanner diverted by behaviour",
+        "status": "pass",
+        "detail": "after 9 requests"
+      },
+      {
+        "group": "detection",
+        "check": "Decoy indistinguishable from real app",
+        "status": "pass",
+        "detail": "no tells found"
+      },
+      {
+        "group": "detection",
+        "check": "Login still reaches real app when diverted",
+        "status": "pass",
+        "detail": "302"
+      },
+      {
+        "group": "detection",
+        "check": "Canary key diverts on first request",
+        "status": "pass",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "target": "rails",
+    "metrics": {
+      "requests_until_diverted": 9,
+      "decoy_tells": []
+    },
+    "results": [
+      {
+        "group": "transparency",
+        "check": "GET /api/health",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/1",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/999",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Requests after HEAD still work",
+        "status": "pass",
+        "detail": "[200, 200, 200]"
+      },
+      {
+        "group": "transparency",
+        "check": "HEAD request",
+        "status": "pass",
+        "detail": "200 vs 200"
+      },
+      {
+        "group": "transparency",
+        "check": "POST JSON",
+        "status": "pass",
+        "detail": "201 vs 201"
+      },
+      {
+        "group": "transparency",
+        "check": "Response headers match",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Compression preserved",
+        "status": "pass",
+        "detail": "direct None, proxy None"
+      },
+      {
+        "group": "transparency",
+        "check": "Login (CSRF + session cookie)",
+        "status": "pass",
+        "detail": "proxy 302 http://127.0.0.1:7108/dashboard"
+      },
+      {
+        "group": "transparency",
+        "check": "All Set-Cookie headers kept",
+        "status": "pass",
+        "detail": "direct 3, proxy 3"
+      },
+      {
+        "group": "transparency",
+        "check": "Session works after login",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "Checkout with session",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "CSRF still enforced",
+        "status": "pass",
+        "detail": "direct 422, proxy 422"
+      },
+      {
+        "group": "transparency",
+        "check": "5 MB multipart upload",
+        "status": "pass",
+        "detail": "direct 200 proxy 200 {\"size\":5242880}"
+      },
+      {
+        "group": "transparency",
+        "check": "Redirect Location",
+        "status": "pass",
+        "detail": "direct 'http://127.0.0.1:7008/api/health', proxy 'http://127.0.0.1:7108/api/health'"
+      },
+      {
+        "group": "transparency",
+        "check": "Server-sent events stream live",
+        "status": "pass",
+        "detail": "3 events, first after 0.23s"
+      },
+      {
+        "group": "transparency",
+        "check": "WebSocket echo",
+        "status": "n/a",
+        "detail": "app has no websocket endpoint"
+      },
+      {
+        "group": "safety",
+        "check": "Human browsing session",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "Browser page-load burst (25 parallel requests)",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "API client polling every 1s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "User hitting a few 404s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "detection",
+        "check": "Scanner diverted by behaviour",
+        "status": "pass",
+        "detail": "after 9 requests"
+      },
+      {
+        "group": "detection",
+        "check": "Decoy indistinguishable from real app",
+        "status": "pass",
+        "detail": "no tells found"
+      },
+      {
+        "group": "detection",
+        "check": "Login still reaches real app when diverted",
+        "status": "pass",
+        "detail": "302"
+      },
+      {
+        "group": "detection",
+        "check": "Canary key diverts on first request",
+        "status": "pass",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "target": "laravel",
+    "metrics": {
+      "requests_until_diverted": 9,
+      "decoy_tells": []
+    },
+    "results": [
+      {
+        "group": "transparency",
+        "check": "GET /api/health",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/1",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/999",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Requests after HEAD still work",
+        "status": "pass",
+        "detail": "[200, 200, 200]"
+      },
+      {
+        "group": "transparency",
+        "check": "HEAD request",
+        "status": "pass",
+        "detail": "200 vs 200"
+      },
+      {
+        "group": "transparency",
+        "check": "POST JSON",
+        "status": "pass",
+        "detail": "201 vs 201"
+      },
+      {
+        "group": "transparency",
+        "check": "Response headers match",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Compression preserved",
+        "status": "pass",
+        "detail": "direct None, proxy None"
+      },
+      {
+        "group": "transparency",
+        "check": "Login (CSRF + session cookie)",
+        "status": "pass",
+        "detail": "proxy 302 http://127.0.0.1:7109/dashboard"
+      },
+      {
+        "group": "transparency",
+        "check": "All Set-Cookie headers kept",
+        "status": "pass",
+        "detail": "direct 4, proxy 4"
+      },
+      {
+        "group": "transparency",
+        "check": "Session works after login",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "Checkout with session",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "CSRF still enforced",
+        "status": "pass",
+        "detail": "direct 419, proxy 419"
+      },
+      {
+        "group": "transparency",
+        "check": "5 MB multipart upload",
+        "status": "pass",
+        "detail": "direct 200 proxy 200 {\"size\":5242880}"
+      },
+      {
+        "group": "transparency",
+        "check": "Redirect Location",
+        "status": "pass",
+        "detail": "direct 'http://127.0.0.1:7009/api/health', proxy 'http://127.0.0.1:7109/api/health'"
+      },
+      {
+        "group": "transparency",
+        "check": "Server-sent events stream live",
+        "status": "pass",
+        "detail": "3 events, first after 0.02s"
+      },
+      {
+        "group": "transparency",
+        "check": "WebSocket echo",
+        "status": "n/a",
+        "detail": "app has no websocket endpoint"
+      },
+      {
+        "group": "safety",
+        "check": "Human browsing session",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "Browser page-load burst (25 parallel requests)",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "API client polling every 1s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "User hitting a few 404s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "detection",
+        "check": "Scanner diverted by behaviour",
+        "status": "pass",
+        "detail": "after 9 requests"
+      },
+      {
+        "group": "detection",
+        "check": "Decoy indistinguishable from real app",
+        "status": "pass",
+        "detail": "no tells found"
+      },
+      {
+        "group": "detection",
+        "check": "Login still reaches real app when diverted",
+        "status": "pass",
+        "detail": "302"
+      },
+      {
+        "group": "detection",
+        "check": "Canary key diverts on first request",
+        "status": "pass",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "target": "aspnet",
+    "metrics": {
+      "requests_until_diverted": 9,
+      "decoy_tells": []
+    },
+    "results": [
+      {
+        "group": "transparency",
+        "check": "GET /api/health",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/1",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "GET /api/items/999",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Requests after HEAD still work",
+        "status": "pass",
+        "detail": "[200, 200, 200]"
+      },
+      {
+        "group": "transparency",
+        "check": "HEAD request",
+        "status": "pass",
+        "detail": "405 vs 405"
+      },
+      {
+        "group": "transparency",
+        "check": "POST JSON",
+        "status": "pass",
+        "detail": "201 vs 201"
+      },
+      {
+        "group": "transparency",
+        "check": "Response headers match",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "group": "transparency",
+        "check": "Compression preserved",
+        "status": "pass",
+        "detail": "direct None, proxy None"
+      },
+      {
+        "group": "transparency",
+        "check": "Login (CSRF + session cookie)",
+        "status": "pass",
+        "detail": "proxy 302 /dashboard"
+      },
+      {
+        "group": "transparency",
+        "check": "All Set-Cookie headers kept",
+        "status": "pass",
+        "detail": "direct 2, proxy 2"
+      },
+      {
+        "group": "transparency",
+        "check": "Session works after login",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "Checkout with session",
+        "status": "pass",
+        "detail": "200"
+      },
+      {
+        "group": "transparency",
+        "check": "CSRF still enforced",
+        "status": "n/a",
+        "detail": "no CSRF in this app"
+      },
+      {
+        "group": "transparency",
+        "check": "5 MB multipart upload",
+        "status": "pass",
+        "detail": "direct 200 proxy 200 {\"size\":5242880}"
+      },
+      {
+        "group": "transparency",
+        "check": "Redirect Location",
+        "status": "pass",
+        "detail": "direct '/api/health', proxy '/api/health'"
+      },
+      {
+        "group": "transparency",
+        "check": "Server-sent events stream live",
+        "status": "pass",
+        "detail": "3 events, first after 0.05s"
+      },
+      {
+        "group": "transparency",
+        "check": "WebSocket echo",
+        "status": "pass",
+        "detail": "'echo:ping'"
+      },
+      {
+        "group": "safety",
+        "check": "Human browsing session",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "Browser page-load burst (25 parallel requests)",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "API client polling every 1s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "safety",
+        "check": "User hitting a few 404s",
+        "status": "pass",
+        "detail": "not diverted"
+      },
+      {
+        "group": "detection",
+        "check": "Scanner diverted by behaviour",
+        "status": "pass",
+        "detail": "after 9 requests"
+      },
+      {
+        "group": "detection",
+        "check": "Decoy indistinguishable from real app",
+        "status": "pass",
+        "detail": "no tells found"
+      },
+      {
+        "group": "detection",
+        "check": "Login still reaches real app when diverted",
+        "status": "pass",
+        "detail": "302"
+      },
+      {
+        "group": "detection",
+        "check": "Canary key diverts on first request",
+        "status": "pass",
+        "detail": ""
+      }
+    ]
+  }
+]

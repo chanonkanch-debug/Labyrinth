@@ -36,7 +36,17 @@ What the demo shows:
    following fake admin panels, backups and service tokens.
 3. **Attacker B** uses a canary key "leaked" in a public repo. Diverted on the first request, alert fired.
 
+## Testing against real frameworks
+
+`lab/` runs ten real apps (Express, Next.js, FastAPI, Django, Flask, Spring Boot, Go, Rails, Laravel, ASP.NET Core)
+each behind Labyrinth, and `lab/matrix.py` checks that legit traffic passes through untouched, that normal users
+are never diverted, and that attackers are. See [lab/README.md](lab/README.md) and the latest
+[results](lab/results/REPORT.md).
+
 ## Running against your own API
+
+For a real service, start with [docs/DEPLOY.md](docs/DEPLOY.md): Docker, Compose, nginx, Kubernetes, and how to
+roll out in observe-only mode first. The short version:
 
 ```bash
 export LABYRINTH_UPSTREAM=https://your-api.internal
@@ -44,8 +54,7 @@ export LABYRINTH_API_DESCRIPTION="REST API for ... (users, orders, invoices; bea
 export LABYRINTH_COMPANY=yourco
 export LABYRINTH_ADMIN_TOKEN=$(openssl rand -hex 16)
 export ANTHROPIC_API_KEY=...        # optional: live LLM decoys
-python -m labyrinth.proxy           # :8080  (put this in front of the API)
-python -m labyrinth.admin           # :8090  (keep private)
+python -m labyrinth.serve           # proxy on :8080 (put this in front of the API), dashboard on 127.0.0.1:8090
 ```
 
 Create canaries from the dashboard form or the API, then plant them (repo `.env.example`, CI vars, wiki pages, S3):
@@ -75,6 +84,11 @@ Kinds: `api_key`, `aws_key`, `db_url`, `github_token`, `stripe_key`, `jwt_secret
 | `LABYRINTH_ADMIN_TOKEN` | unset | Required for the admin app outside local dev |
 | `LABYRINTH_TRUST_XFF` | `off` | Use `X-Forwarded-For` for client IP (only behind your own LB) |
 | `LABYRINTH_DB` | `labyrinth.db` | SQLite file |
+| `LABYRINTH_MODE` | `divert` | `observe` scores, logs and alerts but never diverts |
+| `LABYRINTH_PRESERVE_HOST` | `on` | Forward the client's `Host` header to the app |
+| `LABYRINTH_HOST`, `LABYRINTH_PORT` | `0.0.0.0`, `8080` | Proxy listen address |
+| `LABYRINTH_ADMIN_HOST`, `LABYRINTH_ADMIN_PORT` | `127.0.0.1`, `8090` | Dashboard listen address |
+| `LABYRINTH_UPSTREAM_TIMEOUT` | `60` | Seconds to wait for the app |
 
 ## How scoring works (`labyrinth/scoring.py`)
 
@@ -94,7 +108,10 @@ A session is currently `hash(client IP + user-agent)`.
 ## Layout
 
 ```
-labyrinth/  config.py  db.py  canary.py  alerts.py  scoring.py  decoy.py  proxy.py  admin.py
+labyrinth/  config.py  db.py  canary.py  alerts.py  scoring.py  decoy.py  proxy.py  admin.py  serve.py
+lab/        docker-compose.yml  matrix.py  apps/<framework>/  results/REPORT.md
+docs/       DEPLOY.md
+Dockerfile
 harness/    sample_api.py  legit_user.py  attacker.py  demo.py
 tests/      test_labyrinth.py
 DECISIONS.md

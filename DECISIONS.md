@@ -38,10 +38,28 @@ Short record of choices made in the Phase 1 prototype, and what to revisit.
 
 11. **Model:** `claude-haiku-5-5` by default for cost and latency, configurable with `LABYRINTH_MODEL`.
 
+12. **Observe mode before divert mode.** `LABYRINTH_MODE=observe` flags and alerts but never diverts, so it can sit
+    in front of production while we measure false positives. Recommended first step for any real deployment.
+
+13. **The proxy streams everything and preserves Host.** Bodies stream both ways (SSE, large files), duplicate
+    headers survive (several `Set-Cookie`), compression is passed through raw, and the client's `Host` is forwarded
+    with `X-Forwarded-*`. Without these, Django/Rails/Laravel CSRF and login broke in the framework lab.
+
+14. **HEAD requests close the upstream connection.** gunicorn sends a body on HEAD, which poisoned the pooled
+    connection and gave the next real user a 502. Found by the framework lab.
+
+15. **The decoy imitates the real app's surface.** It copies the app's identity and security headers, serves the
+    app's own 404 page for paths that wouldn't exist, and replays real responses a session already saw before it
+    was diverted (kept in memory, max 50 per session). The lab showed that without this, every framework's decoy
+    was trivially distinguishable (wrong 404, `server: uvicorn`, data changing mid-session).
+
+16. **Websockets:** passed through for normal sessions, closed for diverted ones. A fake websocket world is future work.
+
 ## Known gaps (next phase)
 
 - Not yet tested against real AI pentest agents; the scripted attacker is a stand-in.
 - Behavioural thresholds are hand-set; need data from real traffic to tune false-positive rate.
-- Proxy does not handle websockets or streaming responses.
+- Decoy websockets: diverted sessions just get their websocket closed.
+- The decoy speaks JSON; for HTML-first apps its pages look like an API, not the site.
 - No "playbook → detection rule" step yet (the Learn stage).
 - Admin auth is a single shared token.

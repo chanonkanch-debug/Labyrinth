@@ -1,0 +1,8 @@
+.venv
+.git
+**/__pycache__
+*.db*
+lab
+tests
+harness
+docs
